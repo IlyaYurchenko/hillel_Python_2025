@@ -1,4 +1,4 @@
-num = int(input(""))
+num = int(input("enter 4 digit number: "))
 
 
 n1 = (num // 1000) % 100
