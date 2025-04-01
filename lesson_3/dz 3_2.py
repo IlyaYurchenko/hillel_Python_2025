@@ -1,5 +1,8 @@
-lst = [12, 3, 4, 10]
-element = lst.pop(-1)
-lst.insert(0, element)
+lst = []
+if len(lst) > 1:
+    element = lst.pop()
+    lst.insert(0, element)
+    print(lst)
+else:
+    print(lst)
 
-print(lst)
