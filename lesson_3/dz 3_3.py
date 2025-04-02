@@ -1,4 +1,4 @@
-lst = []
+lst = [1]
 lst_len = len(lst)
 
 subdiv_lst = lst_len//2
@@ -14,8 +14,7 @@ elif lst_len % 2 != 0:
     lst_new = [lst_1, lst_2]
     print(lst_new)
 elif lst_len == 0:
-    lst_1 = lst
-    lst_new = [lst_1, lst_1]
+    lst_new = [lst, lst]
     print(lst_new)
 
 
