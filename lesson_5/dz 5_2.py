@@ -2,11 +2,8 @@ import keyword
 import string
 
 usr_input = str(input('Enter the var name: \n'))
-not_allowed = ['__', '___']
 
-if usr_input[0] in not_allowed:
-    print("False")
-elif usr_input[0].isdigit():
+if usr_input[0].isdigit():
     print('False')
 elif usr_input in keyword.kwlist:
      print('False')
