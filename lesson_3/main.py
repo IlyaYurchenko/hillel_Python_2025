@@ -17,8 +17,6 @@ while True:
                 result = n1 / n2
             else:
                 print("U can't subdivide by 0")
-        elif operator == 5:
-            break
         else:
             print("ERROR")
 
