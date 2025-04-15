@@ -9,7 +9,9 @@ elif usr_input in keyword.kwlist:
      print('False')
 elif ' ' in usr_input:
     print('False')
-elif any(char.isupper() or char in string.punctuation and char != '_' or usr_input.count('_') > 1 for char in usr_input):
+elif usr_input.startswith('__') or usr_input.startswith('___'):
+    print('False')
+elif any(char.isupper() or char in string.punctuation and char != '_' for char in usr_input):
     print('False')
 else:
     print('True')
