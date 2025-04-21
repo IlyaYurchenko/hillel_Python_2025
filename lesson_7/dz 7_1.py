@@ -1,9 +1,7 @@
-import string
+def say_hi(name, age):
+    res = f"Hi. My name is {name} and I'm {age} years old"
+    print(res)
+    return res
 
-usr_input = str(input("enter letter diapazone: "))
-
-start, end = usr_input.split('-')
-start_index = string.ascii_letters.index(start)
-end_index = string.ascii_letters.index(end)
-
-print(string.ascii_letters[start_index:end_index+1])
+assert say_hi("Alex", 32)
+assert say_hi("Frank", 68)
