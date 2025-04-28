@@ -1,9 +1,8 @@
-def difference(*args: int | float, **kwargs: int | float) -> int | float:
-    if not args and not kwargs:
+def difference(*args) -> int | float:
+    if not args:
         return 0
     else:
-        result = round(max(args or kwargs) - min(args or kwargs), 2)
-        print(result)
+        result = round(max(args) - min(args), 2)
         return result
 
 assert difference(1, 2, 3) == 2, 'Test1'
