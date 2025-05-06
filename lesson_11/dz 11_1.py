@@ -1,5 +1,4 @@
-
-def generate_cube_numbers(end: int):
+def generate_cube_numbers(end: int) -> int:
     num = 2
     while True:
         cube = num ** 3
