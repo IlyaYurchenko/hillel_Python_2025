@@ -1,4 +1,4 @@
-def prime_generator(end):
+def prime_generator(end: int) -> int:
     num = 2
     while num <= end:
         for i in range(2, int(num ** 0.5) + 1):
