@@ -10,8 +10,6 @@ class Student(Human):
         return super().__str__() + f'\nRecord Book: {self.record_book}'
 
     def __eq__(self, other) -> bool:
-        if not isinstance(other, Student):
-            return False
         return str(self) == str(other)
 
     def __hash__(self):
