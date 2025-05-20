@@ -1,4 +1,5 @@
-from dz_14_2_Human import *
+from dz_14_2_Human import Human
+
 
 class Student(Human):
     def __init__(self, gender: str, age: int, first_name: str, last_name: str, record_book: str):
@@ -7,3 +8,14 @@ class Student(Human):
 
     def __str__(self) -> str:
         return super().__str__() + f'\nRecord Book: {self.record_book}'
+
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, Student):
+            return False
+        return str(self) == str(other)
+
+    def __hash__(self):
+        return hash(str(self))
+
+
+

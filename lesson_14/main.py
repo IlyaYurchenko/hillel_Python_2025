@@ -1,4 +1,5 @@
-from dz_14_2_Group import *
+from dz_14_2_Group import Group
+from dz_14_2_Student import Student
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
 st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
@@ -11,3 +12,9 @@ assert gr.find_student('Jobs2') is None
 
 gr.delete_student('Taylor')
 print(gr) # Only one student
+
+
+st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
+gr = Group('PD1')
+gr.add_student(st1)
+assert gr.find_student('Jobs') == st1
