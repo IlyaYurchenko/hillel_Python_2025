@@ -24,6 +24,8 @@ class Group:
         self.group = set()
 
     def add_student(self, student: Student):
+        if len(self.group) >= 10:
+            raise ValueError('10 students limit')
         self.group.add(student)
 
     def find_student(self, last_name: str) -> Student | None:
@@ -45,20 +47,30 @@ class Group:
         return f'Group number: {self.number}\nStudents:\n{all_students}'
 
 
-
-st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
-st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
 gr = Group('PD1')
-gr.add_student(st1)
-gr.add_student(st2)
-print(gr)
 
+for i in range(10):
+    student = Student('Male', 20 + i, f'Name{i}', f'LastName{i}', f'RB{i}')
+    gr.add_student(student)
 
-assert str(gr.find_student('Jobs')) == str(st1), 'Test1'
-assert gr.find_student('Jobs2') is None, 'Test2'
-assert isinstance(gr.find_student('Jobs'), Student) is True, 'Метод пошуку повинен повертати екземпляр'
+try:
+    gr.add_student(Student('Female', 22, 'Extra', 'Student', 'RB999'))
+except ValueError as e:
+    print(e)
 
-gr.delete_student('Taylor')
-print(gr) # Only one student
-
-gr.delete_student('Taylor') # No error!
+#
+# st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
+# st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
+#
+#
+# gr.add_student(st1)
+# gr.add_student(st2)
+#
+# assert str(gr.find_student('Jobs')) == str(st1), 'Test1'
+# assert gr.find_student('Jobs2') is None, 'Test2'
+# assert isinstance(gr.find_student('Jobs'), Student) is True, 'Метод пошуку повинен повертати екземпляр'
+#
+# gr.delete_student('Taylor')
+# print(gr) # Only one student
+#
+# gr.delete_student('Taylor') # No error!
