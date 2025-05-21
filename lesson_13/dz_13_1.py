@@ -8,7 +8,6 @@ class Human:
     def __str__(self) -> str:
         return f'First name: {self.first_name} \nLast Name: {self.last_name} \nAge: {self.age} \nGender: {self.gender}'
 
-
 class Student(Human):
     def __init__(self, gender: str, age: int, first_name: str, last_name: str, record_book: str):
         super().__init__(gender, age, first_name, last_name)
@@ -17,7 +16,6 @@ class Student(Human):
     def __str__(self) -> str:
         return super().__str__() + f'\nRecord Book: {self.record_book}'
 
-
 class Group:
     def __init__(self, number: str):
         self.number = number
@@ -25,7 +23,7 @@ class Group:
 
     def add_student(self, student: Student):
         if len(self.group) >= 10:
-            raise ValueError('10 students limit')
+            raise GroupIsFull()
         self.group.add(student)
 
     def find_student(self, last_name: str) -> Student | None:
@@ -46,6 +44,11 @@ class Group:
         all_students = '\n'.join([str(student) for student in self.group])
         return f'Group number: {self.number}\nStudents:\n{all_students}'
 
+class GroupIsFull(Exception):
+    def __init__(self, message = 'The group is full'):
+        super().__init__(message)
+
+
 
 gr = Group('PD1')
 
@@ -55,7 +58,7 @@ for i in range(10):
 
 try:
     gr.add_student(Student('Female', 22, 'Extra', 'Student', 'RB999'))
-except ValueError as e:
+except GroupIsFull as e:
     print(e)
 
 #
