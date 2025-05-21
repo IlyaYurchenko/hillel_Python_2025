@@ -48,8 +48,6 @@ class GroupIsFull(Exception):
     def __init__(self, message = 'The group is full'):
         super().__init__(message)
 
-
-
 gr = Group('PD1')
 
 for i in range(10):
