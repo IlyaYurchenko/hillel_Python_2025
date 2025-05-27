@@ -1,42 +1,45 @@
 from math import gcd
 
 class Fraction:
-    def __init__(self, a, b):
+    def __init__(self, a: int, b: int) -> None:
         if b == 0:
             raise ValueError("Denominator cannot be zero.")
-        self.a = a
-        self.b = b
+        self.a: int = a
+        self.b: int = b
 
-    def __mul__(self, other):
+    def __mul__(self, other: 'Fraction') -> 'Fraction':
         new_a = self.a * other.a
         new_b = self.b * other.b
         return Fraction(new_a, new_b)
 
-    def __add__(self, other):
+    def __add__(self, other: 'Fraction') -> 'Fraction':
         new_a = self.a * other.b + other.a * self.b
         new_b = self.b * other.b
         return Fraction(new_a, new_b)
 
-    def __sub__(self, other):
+    def __sub__(self, other: 'Fraction') -> 'Fraction':
         new_a = self.a * other.b - other.a * self.b
         new_b = self.b * other.b
         return Fraction(new_a, new_b)
 
-    def __eq__(self, other):
-        return self._reduced() == other._reduced()
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Fraction):
+            return self._reduced() == other._reduced()
+        return NotImplemented
 
-    def __gt__(self, other):
+    def __gt__(self, other: 'Fraction') -> bool:
         return self.a * other.b > other.a * self.b
 
-    def __lt__(self, other):
+    def __lt__(self, other: 'Fraction') -> bool:
         return self.a * other.b < other.a * self.b
 
-    def _reduced(self):
+    def _reduced(self) -> tuple[int, int]:
         g = gcd(self.a, self.b)
         return (self.a // g, self.b // g)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Fraction: {self.a}, {self.b}"
+
 
 f_a = Fraction(2, 3)
 f_b = Fraction(3, 6)

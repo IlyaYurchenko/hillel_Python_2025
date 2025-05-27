@@ -1,30 +1,31 @@
 class Rectangle:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+    def __init__(self, width: float, height: float) -> None:
+        self.width: float = width
+        self.height: float = height
 
-    def rec_square(self):
+    def rec_square(self) -> float:
         return self.width * self.height
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
         if isinstance(other, Rectangle):
             return self.rec_square() == other.rec_square()
         return False
 
-    def __add__(self, other):
+    def __add__(self, other: object) -> 'Rectangle':
         if isinstance(other, Rectangle):
             total_area = self.rec_square() + other.rec_square()
             return Rectangle(1, total_area)
         return NotImplemented
 
-    def __mul__(self, n):
+    def __mul__(self, n: float) -> 'Rectangle':
         if isinstance(n, (int, float)):
             new_area = self.rec_square() * n
             return Rectangle(1, new_area)
         return NotImplemented
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Rectangle({self.width}, {self.height})'
+
 
 r1 = Rectangle(2, 4)
 r2 = Rectangle(3, 6)
